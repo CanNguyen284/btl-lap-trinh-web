@@ -1,0 +1,26 @@
+services:
+#  xampp:
+#    image: tomsik68/xampp
+#    container_name: xampp_container
+#    ports:
+#      - "8080:80"
+#      - "443:443"
+#    volumes:
+#      - ./docs:/opt/lampp/htdocs
+#      - ./ssl/localhost.crt:/opt/lampp/ssl/localhost.crt
+#      - ./ssl/localhost.key:/opt/lampp/ssl/localhost.key
+#      - ./ssl/httpd-ssl.conf:/opt/lampp/etc/extra/httpd-ssl.conf
+#    restart: always
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_container
+    env_file:
+      - .env
+    environment:
+      MYSQL_DATABASE: ${db}
+      MYSQL_USER: ${user}
+      MYSQL_PASSWORD: ${password}
+      MYSQL_ROOT_PASSWORD: ${password}
+    ports:
+      - "3306:3306"
