@@ -1,0 +1,27 @@
+services:
+  xampp:
+    image: tomsik68/xampp
+    container_name: xampp_container
+    ports:
+      - "8080:80"
+      - "443:443"
+    volumes:
+      - ./docs:/opt/lampp/htdocs
+#      - ./ssl/localhost.crt:/opt/lampp/ssl/localhost.crt
+#      - ./ssl/localhost.key:/opt/lampp/ssl/localhost.key
+#      - ./ssl/httpd-ssl.conf:/opt/lampp/etc/extra/httpd-ssl.conf
+    restart: always
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_container
+    env_file:
+      - .env
+    environment:
+      PMA_HOST: ${ip}
+      PMA_PORT: ${port}
+      PMA_USER: ${user}
+      PMA_PASSWORD: ${password}
+    ports:
+      - "8081:80"
+    restart: always
