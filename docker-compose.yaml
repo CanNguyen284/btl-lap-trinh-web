@@ -7,9 +7,9 @@ services:
       - "443:443"
     volumes:
       - ./docs:/opt/lampp/htdocs
-#      - ./ssl/localhost.crt:/opt/lampp/ssl/localhost.crt
-#      - ./ssl/localhost.key:/opt/lampp/ssl/localhost.key
-#      - ./ssl/httpd-ssl.conf:/opt/lampp/etc/extra/httpd-ssl.conf
+      - ./ssl/localhost.crt:/opt/lampp/ssl/localhost.crt
+      - ./ssl/localhost.key:/opt/lampp/ssl/localhost.key
+      - ./ssl/httpd-ssl.conf:/opt/lampp/etc/extra/httpd-ssl.conf
     restart: always
 
   phpmyadmin:
@@ -20,8 +20,8 @@ services:
     environment:
       PMA_HOST: ${ip}
       PMA_PORT: ${port}
-      PMA_USER: ${user}
-      PMA_PASSWORD: ${password}
+#      PMA_USER: ${user}
+#      PMA_PASSWORD: ${password}
     ports:
       - "8081:80"
     restart: always
