@@ -33,7 +33,7 @@ apt install composer
 apt install git
 ```
 
-### Cài Đặt DỰ ÁN
+#### 3 Cài Đặt DỰ ÁN
 Clone project backend về:
 ```bash
 git clone -b back-end git@github.com:wwenrr/btl-lap-trinh-web.git
@@ -41,9 +41,9 @@ git clone -b back-end git@github.com:wwenrr/btl-lap-trinh-web.git
 Cài đặt thư viện trong composer.json
 ```bash
 compose install
-``
+```
 
-#Chạy dự án
+## Chạy dự án
 ```bash
 composer start
 ```
