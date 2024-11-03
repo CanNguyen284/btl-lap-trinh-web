@@ -37,6 +37,7 @@ try {
             $pathName = [
                 './controller/' . $class . ".php",
                 './controller/authentication/' . $class . ".php",
+                './controller/api/' . $class . ".php"
             ];
         } else if(str_contains($class, 'Service')) {
             $pathName = [
@@ -80,6 +81,9 @@ try {
     if($n < 2 || !isset($part[$n-1]))
         throw new Exception("Endpoint không hợp lệ!");
 
+    //Khởi tạo Env
+    envLoaderService::loadEnv();
+
     //Đi qua middleware
     for ($i = 1; $i < $n - 1; $i++) {
         $className = isset($part[$i]) ? $part[$i] . "Controller" : null;
@@ -94,8 +98,7 @@ try {
         }
     }
 
-
-    // Tạo Class
+    // Gửi request đến controller
     $className = isset($part[$n-1]) ? ($part[$n-1]) . 'Controller' : null;
 
     $controller = new $className();
@@ -103,12 +106,13 @@ try {
     $method = $_SERVER['REQUEST_METHOD'];
 
     if (method_exists($controller, $method)) {
-        envLoaderService::loadEnv();
         $controller->$method();
     } else {
         throw new Exception("Method này không hợp lệ");
     }
 } catch (Exception $e) {
+    http_response_code(500);
+
     $responseData = [
         'date' => date('Y-m-d H:i:s'),
         'code' => "500",
