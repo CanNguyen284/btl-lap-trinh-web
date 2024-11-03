@@ -27,3 +27,25 @@ Dự án này là một ứng dụng backend được phát triển bằng PHP, 
 apt install php
 apt install composer
 ```
+
+#### 2 Cài đặt Git
+```bash
+apt install git
+```
+
+### Cài Đặt DỰ ÁN
+Clone project backend về:
+``bash
+git clone -b back-end git@github.com:wwenrr/btl-lap-trinh-web.git
+```
+Cài đặt thư viện trong composer.json
+```bash
+compose install
+``
+
+#Chạy dự án
+```bash
+composer start
+```
+
+
