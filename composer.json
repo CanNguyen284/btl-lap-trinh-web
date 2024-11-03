@@ -1,0 +1,11 @@
+{
+    "name": "root/btl-lap-trinh-web",
+    "autoload": {
+        "psr-4": {
+            "Root\\BtlLapTrinhWeb\\": "src/"
+        }
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.9"
+    }
+}
