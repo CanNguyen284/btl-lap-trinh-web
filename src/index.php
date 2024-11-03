@@ -42,6 +42,14 @@ try {
             $pathName = [
                 './service/' . $class . ".php",
             ];
+        } else if(str_contains($class, 'Model')) {
+            $pathName = [
+                './model/' . $class . ".php",
+            ];
+        } else if(str_contains($class, 'Repository')) {
+            $pathName = [
+                './repository/' . $class . ".php",
+            ];
         } else {
             return;
         }
@@ -100,8 +108,6 @@ try {
     } else {
         throw new Exception("Method này không hợp lệ");
     }
-
-
 } catch (Exception $e) {
     $responseData = [
         'date' => date('Y-m-d H:i:s'),
