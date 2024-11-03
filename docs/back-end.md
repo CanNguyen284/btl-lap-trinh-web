@@ -15,8 +15,8 @@ Dự án này là một ứng dụng backend được phát triển bằng PHP, 
 - [Kết Luận](#kết-luận)
 
 ## Yêu Cầu Hệ Thống
-- Hệ điều hành: Windows 10 hoặc 11 với Windows Subsystem for Ubuntu/Linux (WSL)
-- WSL đã được cài đặt và cấu hình trên máy tính của bạn
+- Hệ điều hành: Windows 10 hoặc 11 với Windows Subsystem for Ubuntu/Linux (WSL) hệ điều hành nhân Linux.
+- WSL đã được cài đặt và cấu hình trên máy tính (nếu dùng window).
 
 ## Cài Đặt Môi Trường
 
