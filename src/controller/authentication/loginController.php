@@ -10,6 +10,6 @@ class loginController extends authController {
             $this->responseJsonData("Đăng nhập thành công!");
         }
 
-        $this->responseJsonData("Sai mật khẩu", 401);;
+        $this->responseJsonData("Sai mật khẩu", 401);
     }
 }

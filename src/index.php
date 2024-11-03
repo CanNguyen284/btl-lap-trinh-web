@@ -34,11 +34,21 @@ try {
         $pathName = [];
 
         if (str_contains($class, 'Controller')) {
-            $pathName = [
-                './controller/' . $class . ".php",
-                './controller/authentication/' . $class . ".php",
-                './controller/api/' . $class . ".php"
-            ];
+            $path    = './controller';
+            $files = scandir($path);
+
+            $directories = array_filter($files, function($item) use ($path) {
+                return is_dir($path . '/' . $item) && $item !== '.' && $item !== '..';
+            });
+
+            $pathName = [];
+
+            array_push($pathName, './controller/' . $class . ".php");
+
+            foreach ($directories as $direc) {
+                $pathController = './controller/' . $direc . "/" . $class . ".php";
+                array_push($pathName, $pathController);
+            }
         } else if(str_contains($class, 'Service')) {
             $pathName = [
                 './service/' . $class . ".php",
@@ -84,18 +94,31 @@ try {
     //Khởi tạo Env
     envLoaderService::loadEnv();
 
-    //Đi qua middleware
-    for ($i = 1; $i < $n - 1; $i++) {
+    //Kiểm tra cấu trúc URI
+    $uri_path = [];
+
+    for ($i = 1; $i < $n; $i++) {
         $className = isset($part[$i]) ? $part[$i] . "Controller" : null;
 
         if($className && class_exists($className)) {
             $controller = new $className();
 
-            if (method_exists($controller, 'middleware'))
-                $controller->middleware();
+            array_push($uri_path, $controller);
         } else {
             throw new Exception("Không tồn tại endpoint này " . $className);
         }
+    }
+
+    //Đi qua middleware
+    for ($i = 0; $i < count($uri_path) - 1; $i ++) {
+        $class = get_class($uri_path[$i]);
+        $subclass = get_class($uri_path[$i+1]);
+
+        if(!is_subclass_of($subclass, $class))
+            throw new Exception("Cấu trúc api không hợp lệ");
+
+        if(method_exists($uri_path[$i], "middleware"))
+            $uri_path[$i]->middleware();
     }
 
     // Gửi request đến controller
@@ -110,6 +133,17 @@ try {
     } else {
         throw new Exception("Method này không hợp lệ");
     }
+
+    //Trả về Http.ok
+    http_response_code(200);
+    $responseData = [
+        'date' => date('Y-m-d H:i:s'),
+        'code' => "200",
+        'message' => null,
+        'path' => $_SERVER["REQUEST_URI"]
+    ];
+
+    echo json_encode($responseData);
 } catch (Exception $e) {
     http_response_code(500);
 

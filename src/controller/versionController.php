@@ -23,10 +23,6 @@ class versionController {
         exit;
     }
 
-    public function GET () {
-        $this->responseJsonData("Server is living, phiên bản v1.0");
-    }
-
     public function __construct() {
 
     }
