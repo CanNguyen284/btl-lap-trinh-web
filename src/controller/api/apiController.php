@@ -1,6 +1,6 @@
 <?php
 
-class apiController extends versionController {
+class apiController extends Controller {
     protected $username;
 
     public function middleware() {
@@ -8,7 +8,6 @@ class apiController extends versionController {
 
         if($token == null)
             $this->responseJsonData("Api yêu cầu đăng nhập", 401);
-
 
         $decoded = jwtService::validateToken($_COOKIE['token']);
 

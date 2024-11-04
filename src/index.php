@@ -29,40 +29,42 @@ set_error_handler(function ($severity, $message, $file, $line) {
     exit();
 });
 
+function isDirectSubclass($childClass, $parentClass) {
+    $parent = get_parent_class($childClass);
+    return $parent === $parentClass;
+}
+
 try {
     spl_autoload_register(function ($class) {
+        $fileStructure = [
+            'controller',
+            'model',
+            'repository',
+            'service'
+        ];
         $pathName = [];
 
-        if (str_contains($class, 'Controller')) {
-            $path    = './controller';
-            $files = scandir($path);
+        foreach ($fileStructure as $file) {
+            if(str_contains($class, ucfirst($file))) {
 
-            $directories = array_filter($files, function($item) use ($path) {
-                return is_dir($path . '/' . $item) && $item !== '.' && $item !== '..';
-            });
+                $path    = "./" . "$file";
 
-            $pathName = [];
+                array_push($pathName, $path . "/" . $class . ".php");
 
-            array_push($pathName, './controller/' . $class . ".php");
+                $files = scandir($path);
 
-            foreach ($directories as $direc) {
-                $pathController = './controller/' . $direc . "/" . $class . ".php";
-                array_push($pathName, $pathController);
+                $directories = array_filter($files, function($item) use ($path) {
+                    return is_dir($path . '/' . $item) && $item !== '.' && $item !== '..';
+                });
+
+                foreach ($directories as $direc) {
+                    $pathFinder = $path . "/" . $direc .  "/" . $class . ".php";
+
+                    array_push($pathName, $pathFinder);
+                }
+
+                break;
             }
-        } else if(str_contains($class, 'Service')) {
-            $pathName = [
-                './service/' . $class . ".php",
-            ];
-        } else if(str_contains($class, 'Model')) {
-            $pathName = [
-                './model/' . $class . ".php",
-            ];
-        } else if(str_contains($class, 'Repository')) {
-            $pathName = [
-                './repository/' . $class . ".php",
-            ];
-        } else {
-            return;
         }
 
         $find = [false, null];
@@ -97,7 +99,7 @@ try {
     //Kiểm tra cấu trúc URI
     $uri_path = [];
 
-    for ($i = 1; $i < $n; $i++) {
+    for ($i = 0; $i < $n; $i++) {
         $className = isset($part[$i]) ? $part[$i] . "Controller" : null;
 
         if($className && class_exists($className)) {
@@ -109,12 +111,14 @@ try {
         }
     }
 
+//    print_r($uri_path);
+
     //Đi qua middleware
     for ($i = 0; $i < count($uri_path) - 1; $i ++) {
         $class = get_class($uri_path[$i]);
         $subclass = get_class($uri_path[$i+1]);
 
-        if(!is_subclass_of($subclass, $class))
+        if(!isDirectSubclass($subclass, $class))
             throw new Exception("Cấu trúc api không hợp lệ");
 
         if(method_exists($uri_path[$i], "middleware"))

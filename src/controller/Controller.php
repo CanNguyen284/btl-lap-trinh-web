@@ -1,6 +1,6 @@
 <?php
 
-class versionController {
+class Controller {
     protected function requestBody () {
         $inputData = file_get_contents('php://input');
         $data = json_decode($inputData, true);

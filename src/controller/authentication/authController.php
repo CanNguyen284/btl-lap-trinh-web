@@ -1,6 +1,6 @@
 <?php
 
-class authController extends versionController {
+class authController extends Controller {
     protected userDataRepository $userdataRepository;
     protected $requestBody;
 
