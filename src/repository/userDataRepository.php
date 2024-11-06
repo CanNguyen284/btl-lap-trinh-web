@@ -1,6 +1,6 @@
 <?php
 
-class userDataRepository extends databaseRepository {
+class userDataRepository extends userDataDataBaseRepository {
 
     public function save($username, $email, $password) {
         $sql = "

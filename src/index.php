@@ -1,5 +1,4 @@
 <?php
-
 header('Content-Type: application/json');
 
 require '../vendor/autoload.php';
@@ -46,7 +45,6 @@ try {
 
         foreach ($fileStructure as $file) {
             if(str_contains($class, ucfirst($file))) {
-
                 $path    = "./" . "$file";
 
                 array_push($pathName, $path . "/" . $class . ".php");
@@ -66,6 +64,9 @@ try {
                 break;
             }
         }
+
+        if(count($pathName) === 0)
+            return;
 
         $find = [false, null];
 
@@ -143,7 +144,7 @@ try {
     $responseData = [
         'date' => date('Y-m-d H:i:s'),
         'code' => "200",
-        'message' => null,
+        'message' => "Call api thành công nhưng không có kết quả trả về!",
         'path' => $_SERVER["REQUEST_URI"]
     ];
 
