@@ -12,5 +12,7 @@ class apiController extends Controller {
         $decoded = jwtService::validateToken($_COOKIE['token']);
 
         $this->username = $decoded->sub;
+
+        $_SESSION['username'] = $decoded->sub;
     }
 }

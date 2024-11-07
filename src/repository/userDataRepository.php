@@ -12,6 +12,8 @@ class userDataRepository extends userDataDataBaseRepository {
 
         if(!$result) {
             throw new Exception("Tạo bảng thất bại!");
+
+            $this->conn->close();
         }
     }
 

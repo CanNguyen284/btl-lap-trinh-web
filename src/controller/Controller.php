@@ -23,6 +23,19 @@ class Controller {
         exit;
     }
 
+    protected function customResponseData($message, $code = 200) {
+        http_response_code($code);
+
+        $responseData = [
+            'date' => date('Y-m-d H:i:s'),
+            'code' => $code,
+            'message' => $message,
+            'path' => $_SERVER["REQUEST_URI"]
+        ];
+
+        return $responseData;
+    }
+
     public function __construct() {
 
     }

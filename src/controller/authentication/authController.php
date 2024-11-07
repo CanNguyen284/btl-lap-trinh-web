@@ -13,6 +13,8 @@ class authController extends Controller {
         $token = jwtService::createToken($username);
 
         setcookie('token', $token, time() + 3600, "/");
+
+        return $token;
     }
 
     //authcontroller không có method cụ thể

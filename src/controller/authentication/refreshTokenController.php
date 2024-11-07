@@ -16,8 +16,8 @@ class refreshTokenController extends authController {
         } catch (ExpiredException $e) {
             $username =  $e->getPayload()->sub;
 
-            $this->setCookieToken($token);
-            $this->responseJsonData("Yêu cầu refreshToken thành công!");
+            $token = $this->setCookieToken($username);
+            $this->responseJsonData($token);
         }
     }
 }
