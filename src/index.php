@@ -88,7 +88,11 @@ try {
         }
     });
 
-    $part = explode("/", $_SERVER["REQUEST_URI"]);
+    $uri = $_SERVER["REQUEST_URI"];
+    $parsed_url = parse_url($uri);
+    $path = isset($parsed_url['path']) ? $parsed_url['path'] : '';
+    $part = explode("/", $path);
+
     $n = count($part);
 
     if($n < 2 || !isset($part[$n-1]))
@@ -104,26 +108,24 @@ try {
         $className = isset($part[$i]) ? $part[$i] . "Controller" : null;
 
         if($className && class_exists($className)) {
-            $controller = new $className();
+//            $controller = new $className();
 
-            array_push($uri_path, $controller);
+            array_push($uri_path, $className);
         } else {
             throw new Exception("Không tồn tại endpoint này " . $className);
         }
     }
 
-//    print_r($uri_path);
-
     //Đi qua middleware
     for ($i = 0; $i < count($uri_path) - 1; $i ++) {
-        $class = get_class($uri_path[$i]);
-        $subclass = get_class($uri_path[$i+1]);
+//        $class = get_class($uri_path[$i]);
+//        $subclass = get_class($uri_path[$i+1]);
 
-        if(!isDirectSubclass($subclass, $class))
+        if(!isDirectSubclass($uri_path[$i+1], $uri_path[$i]))
             throw new Exception("Cấu trúc api không hợp lệ");
 
-        if(method_exists($uri_path[$i], "middleware"))
-            $uri_path[$i]->middleware();
+//        if(method_exists($uri_path[$i], "middleware"))
+//            $uri_path[$i]->middleware();
     }
 
     // Gửi request đến controller

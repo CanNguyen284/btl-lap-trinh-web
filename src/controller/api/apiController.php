@@ -1,17 +1,20 @@
 <?php
 
 class apiController extends Controller {
-    protected $username;
+    protected userDataRepository $userdataRepository;
+    protected userInfoRepository $userInfoRepository;
 
-    public function middleware() {
+    public function __construct() {
+        parent::__construct();
+        $this->userInfoRepository = new userInfoRepository();
+        $this->userdataRepository = new userDataRepository();
+
         $token = $_COOKIE['token'] ?? null;
 
         if($token == null)
             $this->responseJsonData("Api yêu cầu đăng nhập", 401);
 
         $decoded = jwtService::validateToken($_COOKIE['token']);
-
-        $this->username = $decoded->sub;
 
         $_SESSION['username'] = $decoded->sub;
     }

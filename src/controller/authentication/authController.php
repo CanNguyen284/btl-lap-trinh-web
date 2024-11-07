@@ -2,11 +2,11 @@
 
 class authController extends Controller {
     protected userDataRepository $userdataRepository;
-    protected $requestBody;
 
     public function __construct() {
+        parent::__construct();
+
         $this->userdataRepository = new userDataRepository();
-        $this->requestBody = $this->requestBody();
     }
 
     protected function setCookieToken($username) {

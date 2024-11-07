@@ -8,13 +8,7 @@ class userDataRepository extends userDataDataBaseRepository {
             VALUES ('$username', '$email', '$password')
         ";
 
-        $result = $this->conn->query($sql);
-
-        if(!$result) {
-            throw new Exception("Tạo bảng thất bại!");
-
-            $this->conn->close();
-        }
+        $this->queryExecutor($sql);
     }
 
     public function findByUsername($username) : userDataModel {
@@ -23,43 +17,40 @@ class userDataRepository extends userDataDataBaseRepository {
             WHERE username = '$username'
         ";
 
-        $result = $this->conn->query($sql);
+        $array = $this->getDataFromResult($this->queryExecutor($sql));
 
-        if(!$result) {
-            throw new Exception("Truy vấn thất bại");
-        }
-
-        $array = mysqli_fetch_array( $result, MYSQLI_ASSOC);
-
-        if(!$array)
-            throw new Exception("Không tìm thấy tên đăng nhập");
+        if($array == false)
+            throw new Exception("không tìm thấy tên đăng nhập");
 
         return new userDataModel($array['id'], $array['username'], $array['password'], $array['role']);
     }
 
-    public function existByUsername ($username) {
+    public function updateEmailByUsername($username, $email) {
         $sql = "
-            SELECT * FROM user_data
+            UPDATE user_data
+            SET email = '$email'
             WHERE username = '$username'
         ";
 
-        $result = $this->conn->query($sql);
-
-        if($result->num_rows != 0) {
-            throw new Exception("Username đã tồn tại");
-        }
+        $this->queryExecutor($sql);
     }
 
-    public function existByEmail($email) {
+    public function updatePasswordByUsername($username, $password) {
         $sql = "
-            SELECT * FROM user_data
-            WHERE email = '$email'
+            UPDATE user_data
+            SET password = '$password'
+            WHERE username = '$username'
         ";
 
-        $result = $this->conn->query($sql);
+        $this->queryExecutor($sql);
+    }
 
-        if($result->num_rows != 0) {
-            throw new Exception("Email đã tồn tại");
-        }
+    public function getIdByUsername($username) {
+        $sql = "
+            SELECT id FROM user_data
+            WHERE username = '$username'
+        ";
+
+        return $this->getDataFromResult($this->queryExecutor($sql));
     }
 }

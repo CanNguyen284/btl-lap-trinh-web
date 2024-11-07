@@ -2,8 +2,10 @@
 
 class changeEmailController extends apiController {
     public function PUT() {
-//        var_dump($_SESSION['username']);
+        $email = $this->requestBody['email'];
 
-//        exit;
+        $this->userdataRepository->updateEmailByUsername($_SESSION['username'], $email);
+
+        $this->responseJsonData("Đổi email thành công!");
     }
 }

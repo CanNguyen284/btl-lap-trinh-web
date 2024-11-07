@@ -1,12 +1,7 @@
 <?php
 
 class Controller {
-    protected function requestBody () {
-        $inputData = file_get_contents('php://input');
-        $data = json_decode($inputData, true);
-
-        return $data;
-    }
+    protected $requestBody;
 
     protected function responseJsonData($message, $code = 200) {
         http_response_code($code);
@@ -37,6 +32,7 @@ class Controller {
     }
 
     public function __construct() {
-
+        $inputData = file_get_contents('php://input');
+        $this->requestBody = json_decode($inputData, true);
     }
 }
