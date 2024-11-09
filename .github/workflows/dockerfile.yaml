@@ -2,7 +2,7 @@ name: Dockerfile
 
 on:
   push:
-    branches: [main]
+    branches: [back-end]
     paths-ignore:
       - README.md
      # - .github/workflows/**
