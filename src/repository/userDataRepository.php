@@ -11,7 +11,7 @@ class userDataRepository extends userDataDataBaseRepository {
         $this->queryExecutor($sql);
     }
 
-    public function findByUsername($username) : userDataModel {
+    public function findByUsername($username) {
         $sql = "
             SELECT * FROM user_data
             WHERE username = '$username'
@@ -22,7 +22,7 @@ class userDataRepository extends userDataDataBaseRepository {
         if($array == false)
             throw new Exception("không tìm thấy tên đăng nhập");
 
-        return new userDataModel($array['id'], $array['username'], $array['password'], $array['role']);
+        return $array[0];
     }
 
     public function updateEmailByUsername($username, $email) {
@@ -52,5 +52,28 @@ class userDataRepository extends userDataDataBaseRepository {
         ";
 
         return $this->getDataFromResult($this->queryExecutor($sql));
+    }
+
+    public function getAllUserInfo($offset) {
+        $offset = $offset * 10 ?? 0;
+
+        $sql = "
+            SELECT username, role, email, display_name, vip_level, credits
+            FROM user_data
+            JOIN user_info
+            ON user_data.id = user_info.user_id
+            LIMIT 10 OFFSET $offset
+        ";
+
+        return $this->getDataFromResult($this->queryExecutor($sql));
+    }
+
+    public function deleteByUsername($username) {
+        $sql = "
+            DELETE FROM user_data
+            WHERE username = '$username';
+        ";
+
+        $this->queryExecutor($sql);
     }
 }

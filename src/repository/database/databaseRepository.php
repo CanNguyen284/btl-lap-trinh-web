@@ -46,12 +46,16 @@ class databaseRepository {
     }
 
     protected function getDataFromResult($result) {
-        $array = mysqli_fetch_array( $result, MYSQLI_ASSOC);
+        $results = [];
 
-        if(!$array)
+        while ($array = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            $results[] = $array;
+        }
+
+        if(!$results)
             return false;
 
-        return $array;
+        return $results;
     }
 
     public function __construct() {

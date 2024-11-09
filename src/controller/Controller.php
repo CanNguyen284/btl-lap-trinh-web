@@ -18,17 +18,12 @@ class Controller {
         exit;
     }
 
-    protected function customResponseData($message, $code = 200) {
+    protected function customResponseData($responseData, $code = 200) {
         http_response_code($code);
 
-        $responseData = [
-            'date' => date('Y-m-d H:i:s'),
-            'code' => $code,
-            'message' => $message,
-            'path' => $_SERVER["REQUEST_URI"]
-        ];
+        echo json_encode($responseData);
 
-        return $responseData;
+        exit;
     }
 
     public function __construct() {

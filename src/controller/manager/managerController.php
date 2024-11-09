@@ -6,10 +6,7 @@ class managerController extends apiController {
 
         $user = $this->userdataRepository->findByUsername($_SESSION['username']);
 
-        print_r($user);
-    }
-
-    public function GET() {
-
+        if($user['role'] != "manager")
+            throw new Exception("Role không hợp lệ cho endpoint này");
     }
 }
