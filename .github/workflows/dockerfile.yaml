@@ -55,3 +55,15 @@ jobs:
         run: |
           docker push lmao1415/ltw
 
+  deploys:
+    - name: Trigger Deploy to Render
+      run: |
+        curl -X POST https://api.render.com/v1/services/srv-csnkdl0gph6c73bg3s1g/deploys \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+          -H "Content-Type: application/json" \
+          -d '{
+                "branch": "main",
+                "docker": true
+              }'
+      
+
