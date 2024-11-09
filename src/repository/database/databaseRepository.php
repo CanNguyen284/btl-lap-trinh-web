@@ -1,8 +1,5 @@
 <?php
 
-use Exception;
-use mysqli;
-
 class databaseRepository {
     private $servername;
     private $username;
