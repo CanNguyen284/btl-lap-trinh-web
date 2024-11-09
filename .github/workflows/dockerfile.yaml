@@ -5,7 +5,7 @@ on:
     branches: [back-end]
     paths-ignore:
       - README.md
-     # - .github/workflows/**
+      - .github/workflows/**
 
 jobs:
   build:
@@ -58,6 +58,7 @@ jobs:
   deploys:
     environment: back-end
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: Trigger Deploy to Render
         run: |
