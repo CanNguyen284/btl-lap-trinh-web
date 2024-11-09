@@ -26,6 +26,7 @@ class historyRepository extends historyDataBaseRepository {
             JOIN ltw_user.user_data as ud 
             ON payment.user_id = ud.id 
             ORDER BY `payment`.`time` ASC
+            LIMIT 10 OFFSET $offset
         ";
 
         return $this->getDataFromResult($this->queryExecutor($sql));
