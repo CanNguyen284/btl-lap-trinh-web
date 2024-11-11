@@ -47,7 +47,7 @@ Composer start để chạy chương trình
 
 ### /api: Chức năng chung của người dùng sau khi đăng nhập, yêu cầu token để xác thực
 
-- /api/changDisplayName: Đổi tên hiển thị
+- /api/changeDisplayName: Đổi tên hiển thị
     ```aiignore
     Yêu cầu requestParam:
     ? display_name = <your_name>
@@ -76,10 +76,30 @@ Composer start để chạy chương trình
 - /api/getHistoryPayment: Lấy lịch sử thanh toán
     ```aiignore
     Yêu cầu requestParam:
-    ? offset = <0 -> 10>
+    ? offset = <số nguyên lớn hơn 0>
     ```
 
 - /api/getUserInfo: Lấy thông tin cá nhân
+
+### /api/manager: Api dành cho quản lí, yếu cầu đã xác thực token và role = manager
+
+- /api/manager/deleteUser: Xóa user ra khỏi hệ thống
+    ```aiignore
+    Yêu cầu requestParam:
+    ? username = <tên user>
+    ```
+
+- /api/manager/getAllHistoryPayment: Xóa user ra khỏi hệ thống
+    ```aiignore
+    Yêu cầu requestParam:
+    ? offset = <số nguyên lớn hơn 0>
+    ```
+
+- /api/manager/getAllUser: Lấy danh sách user
+    ```aiignore
+    Yêu cầu requestParam:
+    ? offset = <số nguyên lớn hơn 0>
+    ```
 
 
 
