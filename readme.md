@@ -45,6 +45,41 @@ Composer start để chạy chương trình
 
 - /auth/refreshToken: yêu cầu làm mới token, kết quả trả về là token nếu token cũ hợp lệ
 
-### /api: Chức năng chung của người dùng sau khi đăng nhập
+### /api: Chức năng chung của người dùng sau khi đăng nhập, yêu cầu token để xác thực
+
+- /api/changDisplayName: Đổi tên hiển thị
+    ```aiignore
+    Yêu cầu requestParam:
+    ? display_name = <your_name>
+    ```
+
+- /api/changeEmail: Đổi email của người dùng
+    ```aiignore
+    Yêu cầu requestParam:
+    ? email = <your_email>
+    ```
+
+- /api/changePassword: Đổi mật khẩu của người dùng
+    ```aiignore
+    Yêu cầu requestBody:
+    {
+        "password": "new_password"
+    }
+    ```
+
+- /api/deposit: Nạp tiền vào tài khoản
+    ```aiignore
+    Yêu cầu requestParam:
+    ? amount = <số dương bất kì>
+    ```
+
+- /api/getHistoryPayment: Lấy lịch sử thanh toán
+    ```aiignore
+    Yêu cầu requestParam:
+    ? offset = <0 -> 10>
+    ```
+
+- /api/getUserInfo: Lấy thông tin cá nhân
+
 
 

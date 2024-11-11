@@ -2,7 +2,7 @@
 
 class changeEmailController extends apiController {
     public function PUT() {
-        $email = $this->requestBody['email'];
+        $email = $_GET['email'];
 
         $this->userdataRepository->updateEmailByUsername($_SESSION['username'], $email);
 
