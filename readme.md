@@ -22,5 +22,29 @@ Composer start để chạy chương trình
 ```
 
 ## Cấu trúc API
+#### /auth: xác thực người dùng
+
+- /auth/login: đăng nhập, kết quả trả về là token nếu nhập đúng mật khẩu
+    ```aiignore
+    Yêu cầu requestBody:
+    {
+      "username": "test",
+      "password": "123"
+    }
+    ```
+
+- /auth/register: đăng kí, kết quả trả về là token nếu đúng định dạng
+    ```aiignore
+    Yêu cầu requestBody:
+    {
+      "username": "heheboi2e",
+      "password": "12312312a",
+      "email": "heheboi2@outlook.com"
+    }
+    ```
+
+- /auth/refreshToken: yêu cầu làm mới token, kết quả trả về là token nếu token cũ hợp lệ
+
+### /api: Chức năng chung của người dùng sau khi đăng nhập
 
 

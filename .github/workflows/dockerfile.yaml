@@ -4,7 +4,7 @@ on:
   push:
     branches: [back-end]
     paths-ignore:
-      - README.md
+      - readme.md
       - .github/workflows/**
 
 jobs:
