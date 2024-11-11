@@ -35,8 +35,8 @@ function Home() {
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-      <Image alt="Cover image of a fantasy novel with a dragon and a knight" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/Vh2QqfRSKw3BISNz7uNv5rlaCijIdYarE0qOJae97Z8QZlvTA.jpg" width="600"/>
       <div className="p-4">
+        <img alt="Cover img of a sci-fi novel with a spaceship and distant planets" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/LareB1h5gxzifUyFemfk7mIiuKe0mHeRzIAWaDFL1KAfpsy3JA.jpg" width="600"/>
        <h3 className="text-lg font-bold text-gray-800">
         The Dragons Quest
        </h3>
@@ -46,7 +46,7 @@ function Home() {
       </div>
      </div>
      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-      <Image alt="Cover image of a sci-fi novel with a spaceship and distant planets" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/LareB1h5gxzifUyFemfk7mIiuKe0mHeRzIAWaDFL1KAfpsy3JA.jpg" width="600"/>
+      <img alt="Cover img of a sci-fi novel with a spaceship and distant planets" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/LareB1h5gxzifUyFemfk7mIiuKe0mHeRzIAWaDFL1KAfpsy3JA.jpg" width="600"/>
       <div className="p-4">
        <h3 className="text-lg font-bold text-gray-800">
         Galactic Adventures
@@ -57,7 +57,7 @@ function Home() {
       </div>
      </div>
      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-      <Image alt="Cover image of a romance novel with a couple holding hands in a sunset" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/jtcTrzEKLj7mCF0CnkBVRfkXBEaudQMHpQdKHm3C5rInsy3JA.jpg" width="600"/>
+      <img alt="Cover img of a romance novel with a couple holding hands in a sunset" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/img/jtcTrzEKLj7mCF0CnkBVRfkXBEaudQMHpQdKHm3C5rInsy3JA.jpg" width="600"/>
       <div className="p-4">
        <h3 className="text-lg font-bold text-gray-800">
         Love in the Sunset
@@ -75,7 +75,7 @@ function Home() {
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-      <Image alt="Cover image of a mystery novel with a detective and a dark alley" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/JtMXD5lfSkXrQCQZrmaIGdPfo6CgHdIPCT3k0AZ5GrbHZlvTA.jpg" width="600"/>
+      <img alt="Cover img of a mystery novel with a detective and a dark alley" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/img/JtMXD5lfSkXrQCQZrmaIGdPfo6CgHdIPCT3k0AZ5GrbHZlvTA.jpg" width="600"/>
       <div className="p-4">
        <h3 className="text-lg font-bold text-gray-800">
         The Silent Detective
@@ -86,7 +86,7 @@ function Home() {
       </div>
      </div>
      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-      <Image alt="Cover image of a horror novel with a haunted house and a ghost" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/yf5pEmccb32XEKZUgOHLUEozyTfSmX8vOe7ek458fxmRJr8dC.jpg" width="600"/>
+      <img alt="Cover img of a horror novel with a haunted house and a ghost" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/img/yf5pEmccb32XEKZUgOHLUEozyTfSmX8vOe7ek458fxmRJr8dC.jpg" width="600"/>
       <div className="p-4">
        <h3 className="text-lg font-bold text-gray-800">
         Haunted Nights
@@ -97,7 +97,7 @@ function Home() {
       </div>
      </div>
      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-      <Image alt="Cover image of a historical novel with a medieval castle and knights" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/8EwRpLfGuQ3DKqNEWwegZyWzpkJuiVo1GRGxf54WWeeSKr8dC.jpg" width="600"/>
+      <img alt="Cover img of a historical novel with a medieval castle and knights" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/img/8EwRpLfGuQ3DKqNEWwegZyWzpkJuiVo1GRGxf54WWeeSKr8dC.jpg" width="600"/>
       <div className="p-4">
        <h3 className="text-lg font-bold text-gray-800">
         Medieval Chronicles
@@ -115,7 +115,7 @@ function Home() {
     </h2>
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-      <Image alt="Cover image of a fantasy novel with a wizard and magical creatures" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/kSq4Pohodv7UGhHNxE63jd7fISWLSrApLwtqD7hWJClqsy3JA.jpg" width="600"/>
+      <img alt="Cover img of a fantasy novel with a wizard and magical creatures" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/img/kSq4Pohodv7UGhHNxE63jd7fISWLSrApLwtqD7hWJClqsy3JA.jpg" width="600"/>
       <div className="p-4">
        <h3 className="text-lg font-bold text-gray-800">
         Wizards Journey
@@ -126,7 +126,7 @@ function Home() {
       </div>
      </div>
      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-      <Image alt="Cover image of a thriller novel with a spy and a cityscape" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/BFt1wL2Nu5a5OhQqsZ5mmJ7GvZz6FSOe62tuobtOLdWmsy3JA.jpg" width="600"/>
+      <img alt="Cover img of a thriller novel with a spy and a cityscape" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/img/BFt1wL2Nu5a5OhQqsZ5mmJ7GvZz6FSOe62tuobtOLdWmsy3JA.jpg" width="600"/>
       <div className="p-4">
        <h3 className="text-lg font-bold text-gray-800">
         Spy in the Shadows
@@ -137,7 +137,7 @@ function Home() {
       </div>
      </div>
      <div className="bg-white shadow-md rounded-lg overflow-hidden">
-      <Image alt="Cover image of a drama novel with a family and a countryside" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/k3U40bU2VmZjN1pAFHwzeGRymgSJSNPXaq1GM5zOIC5nsy3JA.jpg" width="600"/>
+      <img alt="Cover img of a drama novel with a family and a countryside" className="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/img/k3U40bU2VmZjN1pAFHwzeGRymgSJSNPXaq1GM5zOIC5nsy3JA.jpg" width="600"/>
       <div className="p-4">
        <h3 className="text-lg font-bold text-gray-800">
         Family Ties
