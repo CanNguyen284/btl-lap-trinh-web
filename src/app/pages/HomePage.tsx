@@ -2,6 +2,7 @@ import Image from 'next/image';
 import '../styles/HomePage.css';
 import Link from 'next/link';
 import user_icon from '@/resource/images/person.png';
+
 function Home() { 
     return (
          <body className="bg-gray-100">

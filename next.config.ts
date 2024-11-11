@@ -1,7 +1,16 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'storage.googleapis.com',
+                port: '', // Để trống cho port mặc định
+                pathname: '/**', // Cho phép tất cả các đường dẫn
+            },
+        ],
+    },
 };
 
 export default nextConfig;
