@@ -76,4 +76,14 @@ class userDataRepository extends userDataDataBaseRepository {
 
         $this->queryExecutor($sql);
     }
+
+    public function updateRoleByUsername($username, $role) {
+        $sql = "
+            UPDATE user_data
+            SET role = '$role'
+            WHERE username = '$username'
+        ";
+
+        $this->queryExecutor($sql);
+    }
 }

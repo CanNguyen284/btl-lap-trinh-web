@@ -152,11 +152,11 @@ try {
 
     echo json_encode($responseData);
 } catch (Exception $e) {
-    http_response_code(500);
+    http_response_code(400);
 
     $responseData = [
         'date' => date('Y-m-d H:i:s'),
-        'code' => "500",
+        'code' => "400",
         'message' => $e->getMessage(),
         'path' => $_SERVER["REQUEST_URI"]
     ];

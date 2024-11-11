@@ -22,6 +22,8 @@ Composer start để chạy chương trình
 ```
 
 ## Cấu trúc API
+
+
 #### /auth: xác thực người dùng
 
 - /auth/login: đăng nhập, kết quả trả về là token nếu nhập đúng mật khẩu
